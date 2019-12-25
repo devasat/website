@@ -165,12 +165,11 @@ status:
   denied: false
 ```
 
-## Using Flags for Your Authorization Module
+## Enable Authorization Modes
 
-You must include a flag in your policy to indicate which authorization module
-your policies include:
+One or more authorization modes can be enabled by specifying a comma-delimited list of values to flag `--authorization-mode` of API server. Modules are checked in order so an earlier module has higher priority to allow or deny a request.
 
-The following flags can be used:
+Examples:
 
   * `--authorization-mode=ABAC` Attribute-Based Access Control (ABAC) mode allows you to configure policies using local files.
   * `--authorization-mode=RBAC` Role-based access control (RBAC) mode allows you to create and store policies using the Kubernetes API.
@@ -178,9 +177,8 @@ The following flags can be used:
   * `--authorization-mode=Node` Node authorization is a special-purpose authorization mode that specifically authorizes API requests made by kubelets.
   * `--authorization-mode=AlwaysDeny` This flag blocks all requests. Use this flag only for testing.
   * `--authorization-mode=AlwaysAllow` This flag allows all requests. Use this flag only if you do not require authorization for your API requests.
+  * `--authorization-mode=ABAC,RBAC` Enable ABAC and RBAC modes.
 
-You can choose more than one authorization module. Modules are checked in order
-so an earlier module has higher priority to allow or deny a request.
 
 ## Privilege escalation via pod creation
 
